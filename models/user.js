@@ -3,10 +3,16 @@
 var mongoose = require('mongoose');
 
 //require the schema for the inventory
+var inventorySchema = require('../models/inventory').schema;
 
+var Schema = mongoose.Schema;
 
 //Declare the user schema
-
+var userSchema = new Schema({
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  inventory: [inventorySchema]
+});
 
 //=================================
 //password hashing and authentication
