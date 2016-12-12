@@ -8,10 +8,11 @@ var methodOverride = require('method-override');
 var app = express();
 
 //port
-var port = process.
+var port = process.env.PORT || 3000;
+var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017';
 
 //Database URI
-mongoose.connect('mongodb://localhost:27017');
+mongoose.connect(mongoDBURI);
 //connect and log a message to know that the database is connected
 mongoose.connection.once('open', function(){
   console.log('connected to mongo database');
@@ -20,7 +21,7 @@ mongoose.connection.once('open', function(){
 
 //===========================================
 //Controllers
-var inventoryContoller = require('./contollers/inventoryController.js');
+var inventoryContoller = require('/contollers/inventoryController.js');
 app.use('/inventoryContoller', inventoryContoller);
 
 var userController = require('./contollers/userController.js');
@@ -56,6 +57,6 @@ app.get('/', function(req, res){
 
 
 //Listening to port
-app.listen(3000, function(){
-  console.log('GearShare is listening...');
+app.listen(port, function(){
+  console.log('GearShare is listening on port...' + port);
 });
