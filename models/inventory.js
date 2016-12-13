@@ -5,10 +5,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 //write out the schema for the inventory here
-
 var inventorySchema = new Schema({
   Name: String,
-  Location: String,
+  product_Location: String,
   Activity: String,
   Owner: String
 });

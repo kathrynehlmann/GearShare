@@ -1,5 +1,4 @@
 //require  dependencies
-
 var mongoose = require('mongoose');
 
 //require the schema for the inventory
@@ -28,7 +27,7 @@ var userSchema = new Schema({
 
 //=================================
 
-//Sorting the gear arrays
+//Sorting the inventory arrays
 
 
 

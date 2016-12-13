@@ -1,5 +1,6 @@
 //Dependencies for User routers
-
+var express = require('express');
+var router = express.Router();
 
 //models
 

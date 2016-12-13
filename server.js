@@ -9,34 +9,38 @@ var app = express();
 
 //port
 var port = process.env.PORT || 3000;
-var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017';
+var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/gearshare';
 
 //Database URI
 mongoose.connect(mongoDBURI);
 //connect and log a message to know that the database is connected
 mongoose.connection.once('open', function(){
   console.log('connected to mongo database');
-});
+
+
+}); //end of URI
 
 
 //===========================================
 //Controllers
-var inventoryContoller = require('/contollers/inventoryController.js');
-app.use('/inventoryContoller', inventoryContoller);
+var inventoryController = require('./controllers/inventoryController');
+app.use('/inventory', inventoryController);
 
-var userController = require('./contollers/userController.js');
-app.use('/userController', userController);
+var userController = require('./controllers/userController');
+app.use('/user', userController);
 
 
 //===========================================
 //Middleware
-
+app.use(methodOverride('_method')); //preparing to allow POST PUT DELETE from a Form
+app.use(bodyParser.urlencoded({ extended:false })); //req.body
+app.use(bodyParser.json()); // req.bodyParser and use JSON
 
 
 //===========================================
 // Root Route
 app.get('/', function(req, res){
-  res.redirect('/');
+  res.send('Welcome to the index page');
 });
 
 //===========================================
