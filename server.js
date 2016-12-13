@@ -17,6 +17,16 @@ mongoose.connect(mongoDBURI);
 mongoose.connection.once('open', function(){
   console.log('connected to mongo database');
 
+//Test the schema -- to be commented out after successful tests
+// console.log('Testing mongoose schema . . .');
+// var Inventory = require('./models/inventory');
+//
+// var newData = { Name: "Skis" }
+//
+// Inventory.create(newData, function(err, createdInventory) {
+//   if (err) { console.log ('error is: ', err) }
+//   console.log(createdInventory);
+// });
 
 }); //end of URI
 
