@@ -7,6 +7,9 @@ var methodOverride = require('method-override');
 //Using express
 var app = express();
 
+// //Using ejs
+// app.set('view engine', 'ejs');
+
 //port
 var port = process.env.PORT || 3000;
 var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/gearshare';

@@ -3,15 +3,21 @@ var express = require('express');
 var router = express.Router();
 
 //models
+var Inventory = require('../models/inventory');
+var User = require('../models/user');
+
+//Want a route that goes to user/inventory
+//NEW route
+router.get('user/inventory', function(req, res) {
+  res.render('user/new.ejs');
+});
 
 
 //================================
 //Set SESSION Database
 
 //Create User - data comes from signup page
-//POST route /user
-
-
+//POST  /user
   //if user already exists then send an error message to the page
 
 
@@ -19,7 +25,7 @@ var router = express.Router();
 
 
 
-//end user Create
+ //end user Create
 
 
 //User Login - data comes from signup page

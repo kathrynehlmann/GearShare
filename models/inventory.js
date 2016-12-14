@@ -6,10 +6,10 @@ var Schema = mongoose.Schema;
 
 //write out the schema for the inventory here
 var inventorySchema = new Schema({
-  Name: String,
+  name: String,
   product_Location: String,
-  Activity: String,
-  Owner: String
+  activity: String,
+  owner: String
 });
 
 
