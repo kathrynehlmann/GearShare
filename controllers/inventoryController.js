@@ -42,30 +42,11 @@ router.post('/', function(req, res) {
   });
 });
 
-// Show Gear Route
-router.get('/:id', function(req, res) {
-  console.log('This is the show route!');
-  Inventory.findById(req.params.id, function(err, inventory) {
-      if(err) {
-      console.log(err);
-    } else {
-      res.render('inventory/show.ejs', { inventory: inventory });
-    // res.render('inventory/show.ejs');
-    }
-  });
-});
-
 
 // Delete Route for a piece of gear in the inventory
-router.delete(':/id', function(req, res){
-  Inventory.find({'inventory._id':req.params.id}, function(err, foundInventory){
-    for(var i = 0; i < foundInventory.length; i++){
-      foundInventory[i].inventory.id(req.params.id).remove();
-      foundInventory[i].save();
-  }
-  Inventory.findByIdAndRemove(req.params.id, function() {
+router.delete('/:id', function(req, res){
+  Inventory.findByIdAndRemove(req.params.id, function(err, inventory) {
     res.redirect('/inventory');
-    })
   });
 });
 
@@ -91,7 +72,18 @@ router.put('/:id', function(req, res) {
   });
 });
 
-
+// Show Gear Route
+router.get('/:id', function(req, res) {
+  console.log('This is the show route!');
+  Inventory.findById(req.params.id, function(err, inventory) {
+      if(err) {
+      console.log(err);
+    } else {
+      res.render('inventory/show.ejs', { inventory: inventory });
+    // res.render('inventory/show.ejs');
+    }
+  });
+});
 
 //Export the routers
 module.exports = router;

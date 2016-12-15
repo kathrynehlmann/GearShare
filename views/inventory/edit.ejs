@@ -6,5 +6,12 @@
   </head>
   <body>
     <h1>Edit your gear.</h1>
+    <form action="/inventory" method="POST">
+      <input type="text" name="name" value="<%=inventory.name%>">
+      <input type="text" name="product_Location" placeholder="Location of item">
+      <input type="text" name="activity" placeholder="Outdoor Activity">
+      <input type="text" name="owner" value="<%=inventory.owner%>">
+      <button type="submit">Submit</button>
+    </form>
   </body>
 </html>

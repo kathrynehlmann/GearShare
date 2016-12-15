@@ -77,10 +77,3 @@ app.get('/', function(req, res) {
 
 //End Register
 //===========================================
-
-
-
-
-
-
-//special thanks to https://zellwk.com/blog/crud-express-mongodb/
