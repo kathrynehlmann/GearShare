@@ -7,7 +7,9 @@
   <body>
     <h1>View all gear.</h1>
     <!-- //Tania was awesome and helped me with the inital rendering of the link -->
+  </br>
     <a href="/inventory/new">Create new gear</a>
+  </br>
     <% for(var i=0; i < inventory.length; i++){ %>
       <li>
         <a href="/inventory/<%=inventory[i]._id %>"><%= inventory[i].name%></a>
