@@ -8,7 +8,16 @@ var methodOverride = require('method-override');
 var app = express();
 
 // //Using ejs
-// app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');
+
+//===========================================
+//Middleware
+app.use(methodOverride('_method')); //preparing to allow POST PUT DELETE from a Form
+app.use(bodyParser.urlencoded({ extended:false })); //req.body
+app.use(bodyParser.json()); // req.bodyParser and use JSON
+
+
+//===========================================
 
 //port
 var port = process.env.PORT || 3000;
@@ -20,7 +29,11 @@ mongoose.connect(mongoDBURI);
 mongoose.connection.once('open', function(){
   console.log('connected to mongo database');
 
-//Test the schema -- to be commented out after successful tests
+  //Listening to port
+  app.listen(port, function(){
+    console.log('GearShare is listening on port...' + port);
+  });
+// Test the schema -- to be commented out after successful tests
 // console.log('Testing mongoose schema . . .');
 // var Inventory = require('./models/inventory');
 //
@@ -43,18 +56,12 @@ var userController = require('./controllers/userController');
 app.use('/user', userController);
 
 
-//===========================================
-//Middleware
-app.use(methodOverride('_method')); //preparing to allow POST PUT DELETE from a Form
-app.use(bodyParser.urlencoded({ extended:false })); //req.body
-app.use(bodyParser.json()); // req.bodyParser and use JSON
 
-
-//===========================================
 // Root Route
-app.get('/', function(req, res){
-  res.send('Welcome to the index page');
+app.get('/', function(req, res) {
+  res.redirect('/inventory/index.ejs');
 });
+
 
 //===========================================
 // Register
@@ -73,7 +80,6 @@ app.get('/', function(req, res){
 
 
 
-//Listening to port
-app.listen(port, function(){
-  console.log('GearShare is listening on port...' + port);
-});
+
+
+//special thanks to https://zellwk.com/blog/crud-express-mongodb/

@@ -5,11 +5,31 @@
     <title>Show gear.</title>
   </head>
   <body>
-    <h1>Show user's gear.</h1>
-
-
-
-
-
+  <header>
+    <h1>Show gear</h1>
+      <nav>
+          <ul>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/inventory">All Gear</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    <main>
+      <section>
+        <h3><%=inventory.name %></h3>
+      </section>
+      <section>
+        <a href="/inventory/<%=inventory._id%>/edit">Edit</a>
+      </section>
+      <section>
+        <form action="/inventory/<%=inventory._id%>?_method=DELETE" method="post">
+          <input type="submit" value="Delete Gear"/>
+        </form>
+      </section>
+    </main>
   </body>
 </html>

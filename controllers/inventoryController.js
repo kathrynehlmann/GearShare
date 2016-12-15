@@ -10,11 +10,10 @@ var User = require('../models/user');
 //============================
 //Main page after login - give the user the lsit of gear to the inventory
 //GET list of gear by name listed in the inventory
-router.get('/inventory/index', function(req, res) {
-  // User.findById(req.session.loggedInUser.id, function(err, userData) {
-  //   res.render('inventory/new.ejs', { inventory: inventoryData });
-  res.send('landed on inventory/index');
-  // });
+router.get('/', function(req, res) {
+  Inventory.find({}, function(err, foundInventory){
+  res.render('inventory/index.ejs', {inventory: foundInventory});
+  });
 });
 
 //============================
@@ -26,22 +25,31 @@ router.get('/inventory/index', function(req, res) {
 
 //gear listed by activity
 
+//NEW route -- this has to be listed BEFORE the show route!!
+router.get('/new', function(req, res) {
+  console.log('This is the new route!');
+  res.render('inventory/new.ejs');
+});
 
-//index route
-router.get('/', function(req, res) {
-  Inventory.find(function(err, inventory) {
-    res.render('inventory/index.ejs')
+//Route to create a new piece of Gear in the inventory
+//POST /inventory
+router.post('/', function(req, res) {
+  console.log(req.body);
+  Inventory.create(req.body, function(err, inventory) {
+    // if (err) { console.log(err) }
+    res.redirect('/');
   });
 });
 
 //Show Gear Route
 router.get('/:id', function(req, res) {
+  console.log('This is the show route!');
   Inventory.findById(req.params.id, function(err, inventory) {
     //   if(err) {
     //   res.redirect('/inventory/new');
     // } else {
-    //   res.render('inventory/show.ejs', { inventory: foundInventory });
-    res.render('inventory/show.ejs');
+      res.render('inventory/show.ejs', { inventory: inventory });
+    // res.render('inventory/show.ejs');
     // }
   });
 });
@@ -50,35 +58,25 @@ router.get('/:id', function(req, res) {
 
 
 
-//NEW route
-router.get('/inventory/new', function(req, res) {
-  res.render('inventory/new.ejs');
-});
+//need a router.get here
+// router.get('/new',)
 
-//Route to create a new piece of Gear in the inventory
-//POST /inventory  <----question about this, as it does not have a destination specified for the post portion of the code.
-router.post('/inventory/new', function(req, res) {
-  Inventory.create(req.body, function(err, inventory) {
-    if (err) { console.log(err) }
-    res.render('inventory/new.ejs');
-  });
-});
 
 //Update Route for the inventory list
 router.put('/:id', function(req, res) {
   Inventory.findByIdAndUpdate(req.param.id, req.body, {new:true},
     function(err, inventory) {
       console.log('The inventory: ', inventory);
-      res.render('/inventory/' + inventory.id);
+      res.render('/inventory' + inventory.id);
   });
 });
 
-//Delete Route for a piece of gear in the inventory
-// router.delete(':/id', function(req, res) {
-//   Inventroy.findByIdAndRemove(req.params.id, function(err, inventory) {
-//     res.redirect('/inventory/show.ejs');
-//   });
-// });
+// Delete Route for a piece of gear in the inventory
+router.delete(':/id', function(req, res) {
+  Inventroy.findByIdAndRemove(req.params.id, function(err, inventory) {
+    res.redirect('/inventory/show.ejs');
+  });
+});
 
 
 
