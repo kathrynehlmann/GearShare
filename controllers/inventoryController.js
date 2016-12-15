@@ -12,8 +12,9 @@ var User = require('../models/user');
 //GET list of gear by name listed in the inventory
 router.get('/', function(req, res) {
   Inventory.find({}, function(err, foundInventory){
-  res.render('inventory/index.ejs', {inventory: foundInventory});
+    res.render('inventory/index.ejs', {inventory: foundInventory});
   });
+  // res.send('landing on index page');
 });
 
 //============================
@@ -41,16 +42,16 @@ router.post('/', function(req, res) {
   });
 });
 
-//Show Gear Route
+// Show Gear Route
 router.get('/:id', function(req, res) {
   console.log('This is the show route!');
   Inventory.findById(req.params.id, function(err, inventory) {
-    //   if(err) {
-    //   res.redirect('/inventory/new');
-    // } else {
+      if(err) {
+      console.log(err);
+    } else {
       res.render('inventory/show.ejs', { inventory: inventory });
     // res.render('inventory/show.ejs');
-    // }
+    }
   });
 });
 
@@ -73,8 +74,8 @@ router.put('/:id', function(req, res) {
 
 // Delete Route for a piece of gear in the inventory
 router.delete(':/id', function(req, res) {
-  Inventroy.findByIdAndRemove(req.params.id, function(err, inventory) {
-    res.redirect('/inventory/show.ejs');
+  Inventory.findByIdAndRemove(req.params.id, function(err, inventory) {
+    res.redirect('/inventory');
   });
 });
 

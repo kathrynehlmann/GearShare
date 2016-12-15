@@ -9,7 +9,7 @@ var User = require('../models/user');
 //Want a route that goes to user/inventory
 //NEW route
 router.get('user/inventory', function(req, res) {
-  res.render('user/new.ejs');
+  res.render('inventory/show.ejs');
 });
 
 

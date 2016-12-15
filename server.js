@@ -59,7 +59,8 @@ app.use('/user', userController);
 
 // Root Route
 app.get('/', function(req, res) {
-  res.redirect('/inventory/index.ejs');
+  res.redirect('/inventory');
+  // res.send("landing on index page");
 });
 
 

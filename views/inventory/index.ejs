@@ -6,11 +6,11 @@
   </head>
   <body>
     <h1>View all gear.</h1>
-    //Tania was awesome and helped me with the inital rendering of the link
+    <!-- //Tania was awesome and helped me with the inital rendering of the link -->
     <a href="/inventory/new">Create new gear</a>
     <% for(var i=0; i < inventory.length; i++){ %>
       <li>
-        <a href="/inventory/<%=inventory[i]._id %>"><%=inventory[i].name%></a>
+        <a href="/inventory/<%=inventory[i]._id %>"><%= inventory[i].name%></a>
       </li>
     <% } %>
   </body>
