@@ -55,13 +55,32 @@ router.get('/:id', function(req, res) {
   });
 });
 
-//Route to show a user's inventory of gear
 
+// Delete Route for a piece of gear in the inventory
+router.delete(':/id', function(req, res){
+  Inventory.find({'inventory._id':req.params.id}, function(err, foundInventory){
+    for(var i = 0; i < foundInventory.length; i++){
+      foundInventory[i].inventory.id(req.params.id).remove();
+      foundInventory[i].save();
+  }
+  Inventory.findByIdAndRemove(req.params.id, function() {
+    res.redirect('/inventory');
+    })
+  });
+});
+
+
+//Route to show a user's inventory of gear
 
 
 //need a router.get here
 // router.get('/new',)
-
+router.get('/:id/edit', function(req, res){
+  Inventory.findById(req.params.id, function(err, foundInventory){
+    res.render('inventory/edit.ejs', { inventory: foundInventory
+    });
+  });
+})
 
 //Update Route for the inventory list
 router.put('/:id', function(req, res) {
@@ -71,19 +90,6 @@ router.put('/:id', function(req, res) {
       res.render('/inventory' + inventory.id);
   });
 });
-
-// Delete Route for a piece of gear in the inventory
-router.delete(':/id', function(req, res) {
-  Inventory.findByIdAndRemove(req.params.id, function(err, inventory) {
-    res.redirect('/inventory');
-  });
-});
-
-
-
-
-
-
 
 
 
