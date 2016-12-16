@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 app.use(methodOverride('_method')); //preparing to allow POST PUT DELETE from a Form
 app.use(bodyParser.urlencoded({ extended:false })); //req.body
 app.use(bodyParser.json()); // req.bodyParser and use JSON
-
+app.use(express.static("public"));
 
 //===========================================
 
