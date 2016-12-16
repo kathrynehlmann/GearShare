@@ -5,11 +5,15 @@
     <title>View all gear.</title>
   </head>
   <body>
-    <h1>View all gear.</h1>
+    <h1>Get Outside, with GearShare</h1>
+    <h2>All gear</h2>
     <!-- //Tania was awesome and helped me with the inital rendering of the link -->
-  </br>
-    <a href="/inventory/new">Create new gear</a>
-  </br>
+    <nav>
+      <a href="/inventory">All Gear</a>
+    </br>
+      <a href="/inventory/new">Add new Gear</a>
+    </br>
+      </nav>
     <% for(var i=0; i < inventory.length; i++){ %>
       <li>
         <a href="/inventory/<%=inventory[i]._id %>"><%= inventory[i].name%></a>

@@ -5,13 +5,20 @@
     <title>Edit your gear.</title>
   </head>
   <body>
-    <h1>Edit your gear.</h1>
-    <a href="/inventory">All Gear</a>
+    <h1>Get Outside, with GearShare</h1>
+    <h2>Edit your gear.</h2>
+    <nav>
+      <a href="/inventory">All Gear</a>
+    </br>
+      <a href="/inventory/new">Add new Gear</a>
+    </br>
+      </nav>
     <form action="/inventory/<%=inventory.id%>?_method=PUT" method="POST">
       <input type="text" name="name" value="<%=inventory.name%>">
       <input type="text" name="product_Location" value="<%=inventory.product_Location%>">
       <input type="text" name="activity" value="<%=inventory.activity%>">
       <input type="text" name="owner" value="<%=inventory.owner%>">
+      <input type="text" name="checked_Out" value="<%=inventory.checked_Out%>">
       <button type="submit">Update Gear</button>
     </form>
   </body>

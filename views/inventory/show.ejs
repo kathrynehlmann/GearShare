@@ -7,16 +7,12 @@
   <body>
   <header>
     <h1>Show gear</h1>
-      <nav>
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-                <a href="/inventory">All Gear</a>
-            </li>
-          </ul>
-        </nav>
+    <nav>
+      <a href="/inventory">All Gear</a>
+    </br>
+      <a href="/inventory/new">Add new Gear</a>
+    </br>
+      </nav>
       </header>
     <main>
       <section>
@@ -24,6 +20,7 @@
         <h3>Location: <%= inventory.product_Location %></h3>
         <h3>Activity: <%= inventory.activity %></h3>
         <h3>Owned By: <%= inventory.owner %></h3>
+        <h3>Borrowed By: <%= inventory.checked_Out %></h3>
       </section>
       <section>
         <a href="/inventory/<%=inventory._id%>/edit">Edit</a>
@@ -31,7 +28,7 @@
       <section>
         <form action="/inventory/<%=inventory._id%>?_method=DELETE" method="POST">
           <!-- <input type="submit" value="Delete Gear"/> -->
-          <button>Delete</button>
+          <button type="submit">Remove Gear</button>
         </form>
       </section>
     </main>

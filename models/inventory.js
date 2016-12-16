@@ -9,7 +9,8 @@ var inventorySchema = new Schema({
   name: String,
   product_Location: String,
   activity: String,
-  owner: String
+  owner: String,
+  checked_Out: String
 });
 
 
