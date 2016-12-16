@@ -7,12 +7,12 @@
   <body>
     <h1>Edit your gear.</h1>
     <a href="/inventory">All Gear</a>
-    <form action="/inventory" method="POST">
+    <form action="/inventory/<%=inventory.id%>?_method=PUT" method="POST">
       <input type="text" name="name" value="<%=inventory.name%>">
-      <input type="text" name="product_Location" placeholder="Location of item">
-      <input type="text" name="activity" placeholder="Outdoor Activity">
+      <input type="text" name="product_Location" value="<%=inventory.product_Location%>">
+      <input type="text" name="activity" value="<%=inventory.activity%>">
       <input type="text" name="owner" value="<%=inventory.owner%>">
-      <button type="submit">Submit</button>
+      <button type="submit">Update Gear</button>
     </form>
   </body>
 </html>

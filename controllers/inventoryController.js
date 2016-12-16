@@ -55,7 +55,6 @@ router.delete('/:id', function(req, res){
 
 
 //need a router.get here
-// router.get('/new',)
 router.get('/:id/edit', function(req, res){
   Inventory.findById(req.params.id, function(err, foundInventory){
     res.render('inventory/edit.ejs', { inventory: foundInventory
@@ -65,10 +64,10 @@ router.get('/:id/edit', function(req, res){
 
 //Update Route for the inventory list
 router.put('/:id', function(req, res) {
-  Inventory.findByIdAndUpdate(req.param.id, req.body, {new:true},
+  Inventory.findByIdAndUpdate(req.params.id, req.body, {new:true},
     function(err, inventory) {
       console.log('The inventory: ', inventory);
-      res.render('/inventory' + inventory.id);
+      res.redirect('/inventory/' + inventory.id);
   });
 });
 
