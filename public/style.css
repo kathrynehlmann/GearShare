@@ -1,17 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Fjalla+One');
 
-.tinted-image {
-  background:
-    /* top, transparent red, faked with gradient */
-    linear-gradient(
-      rgba(255, 0, 0, 0.45),
-      rgba(255, 0, 0, 0.45)
-    ),
-    /* bottom, image */
-    url(http://wagnermediaworks.com/wp-content/uploads/2016/12/DSF0687.jpg);
-}
 body  {
-    background-color: lightblue;
+    background-color: aliceblue;
 }
 
 h1 {
@@ -19,6 +9,10 @@ h1 {
 }
 
 h2 {
+  font-family: "Fjalla One";
+}
+
+h3 {
   font-family: "Fjalla One";
 }
 
