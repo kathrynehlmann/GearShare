@@ -7,7 +7,26 @@
     <!-- END Style Sheets -->
     <title>Show account.</title>
   </head>
-  <body>
-    <h1>Show account.</h1>
-  </body>
+  <nav>
+    <a href="/inventory">All Gear</a>
+  </br>
+    <a href="/inventory/new">Add new Gear</a>
+  </br>
+    </nav>
+    </header>
+  <main>
+    <section>
+      <h3>User: <%= user.username %></h3>
+    </section>
+    <section>
+      <a href="/user/<%=user._id%>/edit">Edit</a>
+    </section>
+    <section>
+      <form action="/user/<%=user._id%>?_method=DELETE" method="POST">
+        <!-- <input type="submit" value="Delete Gear"/> -->
+        <button type="submit">Remove User</button>
+        </form>
+      </section>
+    </main>
+</body>
 </html>

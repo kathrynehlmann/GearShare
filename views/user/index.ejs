@@ -2,14 +2,32 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title></title>
+    <!-- END Style Sheets -->
+    <title>View Users</title>
   </head>
   <body>
-
+    <h1>Get Outside, with GearShare</h1>
+    <h2>All Users</h2>
+    <nav class="nav">
+          <a href="/inventory">All Gear</a>
+        </br>
+          <a href="/inventory/new">Add new Gear</a>
+        </br>
+          </nav>
+<!-- //for loop that goes through the users so that a list tag can list each user -->
+    <% for(var i=0; i < user.length; i++){ %>
+<!-- //then after a list of usernames is displayed -->
+    <li>
+      <a href="/users/<%=user[i].id %>"><%= user[i].username%></a>
+    </li>
+<!-- //nest another for loop that goes through the users.inventories.length -->
+        <!-- <% for(var i=0; i < inventory.length; i++){ %>
+          <li>
+            <a href="/inventory/<%=inventory[i]._id %>"><%= inventory[i].name%></a>
+          </li>
+        <% } %>
+    <% } %> -->
   </body>
 </html>
-
-<!-- //for loop that goes through the users so that a list tag can list each user
-//then after a list of usernames is displayed
-//nest another for loop that goes through the users.inventories.length -->

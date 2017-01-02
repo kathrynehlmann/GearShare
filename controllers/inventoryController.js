@@ -28,7 +28,7 @@ router.get('/', function(req, res) {
 
 //NEW route -- this has to be listed BEFORE the show route!!
 router.get('/new', function(req, res) {
-  console.log('This is the new route!');
+  console.log('This is the new GEAR route!');
   res.render('inventory/new.ejs');
 });
 
@@ -54,7 +54,7 @@ router.delete('/:id', function(req, res){
 //Route to show a user's inventory of gear
 
 
-//need a router.get here
+//need a router.get here for inventory
 router.get('/:id/edit', function(req, res){
   Inventory.findById(req.params.id, function(err, foundInventory){
     res.render('inventory/edit.ejs', { inventory: foundInventory
