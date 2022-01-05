@@ -1,6 +1,5 @@
 # GearShare
 ##GearShare allows everyone to keep track of the things they rely on in the outdoors and lend the items freely to friends.
-https://gearshareapp.herokuapp.com
 
 ##The Story behind GearShare
 ######A group of outdoor enthusiasts who live in the city of Denver wish to pool their gear to save space in their homes and have more choices of activities on the weekends.
